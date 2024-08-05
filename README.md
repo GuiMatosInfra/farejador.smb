@@ -113,5 +113,5 @@ nmap -sV -sC -Pn 10.10.80.211
 
 smbclient //ipadress/folder -U user -p 445
 
-
+nc -lvp
 
