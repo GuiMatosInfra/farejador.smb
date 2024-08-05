@@ -115,3 +115,4 @@ smbclient //ipadress/folder -U user -p 445
 
 nc -lvp
 
+nmap -A ipadress -vv
