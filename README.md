@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Instalação do enum4linux no Debian </title>
+    <title>Instalação do enum4linux no Debian</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -43,13 +43,6 @@
             border-bottom: 2px solid #333;
             padding-bottom: 10px;
         }
-        ul {
-            list-style: none;
-            padding: 0;
-        }
-        ul li {
-            margin: 10px 0;
-        }
         pre {
             background: #f4f4f4;
             padding: 10px;
@@ -72,34 +65,46 @@
                     <strong>Atualizar o Sistema</strong>
                     <pre><code>sudo apt update
 sudo apt upgrade</code></pre>
-</li>
-<li>
-<strong>Instalar Dependências</strong>
-<pre><code>sudo apt install python python-pip</code></pre>
-</li>
-<li>
-<strong>Baixar e Instalar o <code>enum4linux</code></strong>
-<pre><code>sudo apt install git
-git clone https://github.com/PowerShellMafia/PowerSploit.git
-cd PowerSploit/Recon/enum4linux
-chmod +x enum4linux.pl</code></pre>
-</li>
-<li>
-<strong>Executar o <code>enum4linux</code></strong>
-<pre><code>./enum4linux.pl <endereço_IP></code></pre>
-Substitua <code><endereço_IP></code> pelo endereço IP do alvo que você deseja escanear.
-</li>
-</ol>
-</section>
-<section class="steps">
-           <h2>Exemplo de Execução</h2>
-           <pre><code>./enum4linux.pl 10.10.133.29</code></pre>
-       </section>
-       <section class="steps">
-           <h2>Nota</h2>
-           <p><strong>Permissões e Legislação:</strong> Sempre obtenha permissão antes de realizar qualquer varredura em redes ou sistemas. A execução não autorizada de ferramentas de enumeração pode ser considerada uma invasão e é ilegal em muitos países e jurisdições.</p>
-       </section>
-   </div>
- </body>
-   </html>
-```
+                </li>
+                <li>
+                    <strong>Instalar Dependências</strong>
+                    <pre><code>sudo apt install python python-pip git</code></pre>
+                </li>
+                <li>
+                    <strong>Clonar o Repositório</strong>
+                    <p>Dependendo do repositório específico, utilize um dos seguintes comandos:</p>
+                    <ul>
+                        <li><strong>Repositório da Cisco:</strong></li>
+                        <pre><code>git clone https://github.com/cisco/enum4linux.git</code></pre>
+                        <li><strong>Repositório da CXSecurity:</strong></li>
+                        <pre><code>git clone https://github.com/cxsecurity/enum4linux.git</code></pre>
+                    </ul>
+                </li>
+                <li>
+                    <strong>Navegar para o Diretório</strong>
+                    <pre><code>cd enum4linux</code></pre>
+                </li>
+                <li>
+                    <strong>Tornar o Script Executável</strong>
+                    <pre><code>chmod +x enum4linux.pl</code></pre>
+                </li>
+                <li>
+                    <strong>Executar o enum4linux</strong>
+                    <pre><code>./enum4linux.pl &lt;endereço_IP&gt;</code></pre>
+                    Substitua <code>&lt;endereço_IP&gt;</code> pelo endereço IP do alvo que você deseja escanear.
+                </li>
+            </ol>
+        </section>
+        <section class="steps">
+            <h2>Exemplo de Execução</h2>
+            <pre><code>./enum4linux.pl 10.10.133.29</code></pre>
+        </section>
+        <section class="steps">
+            <h2>Notas Importantes</h2>
+            <p><strong>Permissões e Legislação:</strong> Sempre obtenha permissão antes de realizar qualquer varredura em redes ou sistemas. A execução não autorizada de ferramentas de enumeração pode ser considerada uma invasão e é ilegal em muitos países e jurisdições.</p>
+            <p><strong>Dependências:</strong> O <code>enum4linux</code> geralmente requer Perl e pode precisar de outros módulos Perl. Verifique a documentação no repositório clonado para qualquer dependência adicional que possa ser necessária.</p>
+        </section>
+    </div>
+</body>
+</html>
+
