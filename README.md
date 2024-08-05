@@ -97,7 +97,7 @@ sudo apt upgrade</code></pre>
         </section>
         <section class="steps">
             <h2>Exemplo de Execução</h2>
-            <pre><code>./enum4linux.pl 10.10.133.29</code></pre>
+            <pre><code>./enum4linux.pl -a 10.10.133.29</code></pre>
         </section>
         <section class="steps">
             <h2>Notas Importantes</h2>
