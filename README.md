@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Instalação do enum4linux no Debian</title>
+    <title>Instalação do enum4linux e Uso de Ferramentas de Segurança</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -54,12 +54,12 @@
 <body>
     <header>
         <div class="container">
-            <h1>Instalação do enum4linux no Debian</h1>
+            <h1>Instalação do enum4linux e Uso de Ferramentas de Segurança</h1>
         </div>
     </header>
     <div class="container">
         <section class="steps">
-            <h2>Passos para Instalação</h2>
+            <h2>Passos para Instalação do enum4linux</h2>
             <ol>
                 <li>
                     <strong>Atualizar o Sistema</strong>
@@ -104,15 +104,53 @@ sudo apt upgrade</code></pre>
             <p><strong>Permissões e Legislação:</strong> Sempre obtenha permissão antes de realizar qualquer varredura em redes ou sistemas. A execução não autorizada de ferramentas de enumeração pode ser considerada uma invasão e é ilegal em muitos países e jurisdições.</p>
             <p><strong>Dependências:</strong> O <code>enum4linux</code> geralmente requer Perl e pode precisar de outros módulos Perl. Verifique a documentação no repositório clonado para qualquer dependência adicional que possa ser necessária.</p>
         </section>
+        <section class="steps">
+            <h2>Uso de Ferramentas de Segurança</h2>
+            <h3>1. Varredura de Rede com <code>nmap</code></h3>
+            <p><strong>Comando:</strong></p>
+            <pre><code>nmap -sV -sC -Pn 10.10.80.211</code></pre>
+            <p><strong>Explicação:</strong></p>
+            <ul>
+                <li><code>nmap</code>: Ferramenta de varredura de rede.</li>
+                <li><code>-sV</code>: Detecta versões dos serviços em execução.</li>
+                <li><code>-sC</code>: Executa scripts de detecção padrão do Nmap.</li>
+                <li><code>-Pn</code>: Desativa a verificação de disponibilidade do host.</li>
+            </ul>
+            <p><strong>Objetivo:</strong> Realizar uma varredura completa no IP <code>10.10.80.211</code>, identificando serviços, versões e executando scripts padrão para coletar informações adicionais.</p>
+            <h3>2. Acesso a Compartilhamentos SMB com <code>smbclient</code></h3>
+            <p><strong>Comando:</strong></p>
+            <pre><code>smbclient //10.10.80.211/folder -U user -p 445</code></pre>
+            <p><strong>Explicação:</strong></p>
+            <ul>
+                <li><code>smbclient</code>: Ferramenta para acessar compartilhamentos de arquivos SMB.</li>
+                <li><code>//10.10.80.211/folder</code>: Caminho do compartilhamento SMB. Substitua <code>10.10.80.211</code> pelo IP do alvo e <code>folder</code> pelo nome do compartilhamento.</li>
+                <li><code>-U user</code>: Nome de usuário para autenticação no compartilhamento.</li>
+                <li><code>-p 445</code>: Porta padrão para SMB.</li>
+            </ul>
+            <p><strong>Objetivo:</strong> Conectar-se a um compartilhamento de arquivos SMB no servidor com IP <code>10.10.80.211</code> e interagir com os arquivos e diretórios compartilhados, fornecendo as credenciais de acesso.</p>
+            <h3>3. Escuta de Porta com <code>netcat</code></h3>
+            <p><strong>Comando:</strong></p>
+            <pre><code>nc -lvp 1234</code></pre>
+            <p><strong>Explicação:</strong></p>
+            <ul>
+                <li><code>nc</code>: Netcat, ferramenta para ler e gravar dados através de conexões de rede.</li>
+                <li><code>-l</code>: Coloca o Netcat em modo escuta.</li>
+                <li><code>-v</code>: Ativa a saída detalhada (verbose).</li>
+                <li><code>-p 1234</code>: Porta na qual o Netcat escutará.</li>
+            </ul>
+            <p><strong>Objetivo:</strong> Iniciar o Netcat para escutar conexões na porta <code>1234</code>, útil para receber conexões de rede ou transferir dados.</p>
+            <h3>4. Varredura Avançada com <code>nmap</code></h3>
+            <p><strong>Comando:</strong></p>
+            <pre><code>nmap -A 10.10.80.211 -vv</code></pre>
+            <p><strong>Explicação:</strong></p>
+            <ul>
+                <li><code>nmap</code>: Ferramenta de varredura de rede.</li>
+                <li><code>-A</code>: Ativa a detecção de versão, execução de scripts e detecção de sistemas operacionais.</li>
+                <li><code>10.10.80.211</code>: IP do alvo.</li>
+                <li><code>-vv</code>: Verbosidade extra para detalhes adicionais.</li>
+            </ul>
+            <p><strong>Objetivo:</strong> Realizar uma varredura avançada no IP <code>10.10.80.211</code>, fornecendo uma análise detalhada dos serviços, versões, sistemas operacionais e possíveis vulnerabilidades.</p>
+        </section>
     </div>
 </body>
 </html>
-
-
-nmap -sV -sC -Pn 10.10.80.211
-
-smbclient //ipadress/folder -U user -p 445
-
-nc -lvp
-
-nmap -A ipadress -vv
